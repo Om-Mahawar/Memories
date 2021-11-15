@@ -17,9 +17,6 @@ import Icon from './Icon';
 import { signin, signup } from '../../actions/auth';
 
 import useStyles from './styles';
-// Google Client Id = 374740377249-u94ndc4l7fehev10lav3ujn69eai01eh.apps.googleusercontent.com
-// Client Secret = C8he0Wo4LUvjPKU6XQx279iM
-
 const Auth = () => {
   const classes = useStyles();
   const [isSignup, setIsSignup] = useState(false);
