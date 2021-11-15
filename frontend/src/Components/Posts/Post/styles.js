@@ -1,11 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { deepPurple } from '@material-ui/core/colors';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: '56.25%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     backgroundBlendMode: 'darken',
+    marginBottom: '8px',
   },
   border: {
     border: 'solid',
@@ -21,11 +23,10 @@ const useStyles = makeStyles({
     height: '100%',
     position: 'relative',
   },
-  overlay: {
-    position: 'absolute',
-    top: '20px',
-    left: '20px',
-    color: 'white',
+  purple: {
+    color: theme.palette.getContrastText(deepPurple[500]),
+    backgroundColor: deepPurple[500],
+    marginRight: '6px',
   },
   overlay2: {
     position: 'absolute',
@@ -45,10 +46,10 @@ const useStyles = makeStyles({
     padding: '0 16px',
   },
   cardActions: {
-    padding: '0 16px 8px 16px',
+    padding: '8px 16px 8px 16px',
     display: 'flex',
     justifyContent: 'space-between',
   },
-});
+}));
 
 export default useStyles;

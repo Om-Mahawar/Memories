@@ -11,6 +11,21 @@ const getPosts = async (req, res) => {
   }
 };
 
+const getPostsBySearch = async (req, res) => {
+  const { searchQuery, tags } = req.query;
+  try {
+    const title = new RegExp(searchQuery, 'i');
+
+    const posts = await PostMessage.find({
+      $or: [{ title }, { tags: { $in: tags.split(',') } }],
+    });
+
+    res.status(200).json({ data: posts });
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+};
+
 const createPost = async (req, res) => {
   const post = req.body;
 
@@ -82,10 +97,28 @@ const likePost = async (req, res) => {
   res.json(updatedPost);
 };
 
+const commentPost = async (req, res) => {
+  const { id } = req.params;
+  const { value } = req.body;
+  const post = await PostMessage.findById(id);
+  const newValue = {
+    ...value,
+    createdAt: new Date().toISOString(),
+  };
+  post.comments.push(newValue);
+
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
+    new: true,
+  });
+  return res.json(updatedPost);
+};
+
 module.exports = {
   getPosts,
+  getPostsBySearch,
   createPost,
   updatePost,
   deletePost,
   likePost,
+  commentPost,
 };

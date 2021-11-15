@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router';
 import decode from 'jwt-decode';
 import { AppBar, Typography, Avatar, Toolbar, Button } from '@material-ui/core';
 
-import memories from '../../images/memories.png';
+import memories_logo from '../../images/memories-Logo.png';
 import useStyles from './styles';
 
 const Navbar = () => {
@@ -28,6 +28,7 @@ const Navbar = () => {
     }
 
     setUser(JSON.parse(localStorage.getItem('profile')));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   const logout = () => {
@@ -38,17 +39,15 @@ const Navbar = () => {
 
   return (
     <AppBar position='static' color='inherit' className={classes.appBar}>
-      <div className={classes.brandContainer}>
-        <Typography variant='h2' align='center' className={classes.heading}>
-          Memories
-        </Typography>
+      <Link to='/' className={classes.brandContainer}>
+        <Typography variant='h2'>UNIV-CONNECT</Typography>
         <img
-          src={memories}
+          src={memories_logo}
           alt='memories'
-          height='60'
+          height='40px'
           className={classes.image}
         />
-      </div>
+      </Link>
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>

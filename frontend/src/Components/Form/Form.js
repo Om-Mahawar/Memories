@@ -14,7 +14,7 @@ const Form = ({ currentId, setCurrentId }) => {
     selectedFile: '',
   });
   const post = useSelector((state) =>
-    currentId ? state.posts.find((p) => p._id === currentId) : null
+    currentId ? state.posts.posts.find((p) => p._id === currentId) : null
   );
 
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -32,11 +32,9 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (
-      postData.creator === '' ||
       postData.title === '' ||
       postData.message === '' ||
-      postData.tags === '' ||
-      postData.selectedFile === ''
+      postData.tags === ''
     ) {
       alert('Please fill Data Correctly');
     } else if (currentId) {
@@ -53,7 +51,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <Paper className={classes.paper}>
         <Typography variant='h6' align='center'>
-          Please Sign In to create your own memories and like other's memories.
+          Please Sign In to create your own posts and interact with other posts.
         </Typography>
       </Paper>
     );
@@ -79,7 +77,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant='h6'>
-          {currentId ? 'Editing' : 'Creating'} a Memory
+          {currentId ? 'Editing' : 'Creating'} a Post
         </Typography>
         <TextField
           name='title'
