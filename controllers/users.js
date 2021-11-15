@@ -45,7 +45,7 @@ const signup = async (req, res) => {
       return res.status(400).json({ message: 'Password do not match' });
     }
 
-    const hashedPassword = await bycrypt.hash(password, 12);
+    const hashedPassword = await bycrypt.hash(password, process.env.SALT);
 
     const result = await User.create({
       email,
