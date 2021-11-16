@@ -8,7 +8,6 @@ import Auth from './Components/Auth/Auth';
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
-  console.log(!user);
   return (
     <BrowserRouter>
       <Container maxWidth='lg'>

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // const url = 'https://om-social-media-memories.herokuapp.com/posts';
 const API = axios.create({
-  baseURL: 'https://om-social-media-memories.herokuapp.com',
+  baseURL: 'https://univ-collect.herokuapp.com/',
   // baseURL: 'http://localhost:5000',
 });
 

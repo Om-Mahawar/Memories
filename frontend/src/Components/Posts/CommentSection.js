@@ -19,6 +19,8 @@ const CommentSection = ({ post }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [comments, setComments] = useState(post?.comments);
+
+  // comments
   const [comment, setComment] = useState('');
   const user = JSON.parse(localStorage.getItem('profile'));
 
