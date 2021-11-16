@@ -68,13 +68,14 @@ const Post = ({ post, setCurrentId }) => {
       </>
     );
   };
-
+  console.log(post.name);
   return (
     <Card className={classes.card} raised elevetion={6}>
       <CardHeader
         avatar={
           <Avatar className={classes.purple}>
-            {post.name.charAt(0) + post.name.split(' ')[1].charAt(0)}
+            {post.name.charAt(0) +
+              (post.name.split(' ')[1] || post.name.split('_')[1]).charAt(0)}
           </Avatar>
         }
         title={post.name}
