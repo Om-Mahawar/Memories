@@ -7,17 +7,17 @@ import useStyles from './styles';
 import { createPost, updatePost } from '../../actions/posts';
 
 const Form = ({ currentId, setCurrentId }) => {
+  const user = JSON.parse(localStorage.getItem('profile'));
   const [postData, setPostData] = useState({
     title: '',
     message: '',
     tags: '',
     selectedFile: '',
+    githubLink: user?.result?.githubLink,
   });
   const post = useSelector((state) =>
     currentId ? state.posts.posts.find((p) => p._id === currentId) : null
   );
-
-  const user = JSON.parse(localStorage.getItem('profile'));
 
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -90,7 +90,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField
           name='message'
           variant='outlined'
-          label='Message'
+          label='Description'
           fullWidth
           value={postData.message}
           onChange={(e) =>

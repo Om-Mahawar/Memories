@@ -50,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  navLink: {
+    color: '#000',
+    textDecoration: 'none',
+  },
 }));
 
 export default useStyles;

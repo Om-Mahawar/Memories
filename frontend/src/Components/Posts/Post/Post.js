@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { deletePost, likePost } from '../../../actions/posts';
 import CommentSection from '../CommentSection';
@@ -68,19 +69,20 @@ const Post = ({ post, setCurrentId }) => {
       </>
     );
   };
-  console.log(post.name);
   return (
     <Card className={classes.card} raised elevetion={6}>
-      <CardHeader
-        avatar={
-          <Avatar className={classes.purple}>
-            {post.name.charAt(0) +
-              (post.name.split(' ')[1] || post.name.split('_')[1]).charAt(0)}
-          </Avatar>
-        }
-        title={post.name}
-        subheader={moment(post.createdAt).fromNow()}
-      />
+      <a href={post.githubLink} className={classes.navLink}>
+        <CardHeader
+          avatar={
+            <Avatar className={classes.purple}>
+              {post.name.charAt(0) +
+                (post.name.split(' ')[1] || post.name.split('_')[1]).charAt(0)}
+            </Avatar>
+          }
+          title={post.name}
+          subheader={moment(post.createdAt).fromNow()}
+        />
+      </a>
       <Typography className={classes.title} variant='h5' gutterBottom>
         {post.title}
       </Typography>

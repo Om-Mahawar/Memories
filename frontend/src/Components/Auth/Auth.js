@@ -25,6 +25,7 @@ const Auth = () => {
     firstName: '',
     lastName: '',
     email: '',
+    githubLink: '',
     password: '',
     confirmPassword: '',
   });
@@ -51,10 +52,23 @@ const Auth = () => {
   };
 
   const googleSuccess = async (res) => {
+    // console.log(res.profileObj);
     const result = res?.profileObj;
     const token = res?.tokenId;
-
+    // res = res.profileObj;
     try {
+      // setFormData({
+      //   ...formData,
+      //   {
+      //     firstName: res.givenName,
+      //     lastName: res.familyName,
+      //     email: res.email,
+      //     password: 'Google SignIn',
+      //     confirmPassword: 'Google SignIn',
+      //   },
+      // });
+      // console.log(formData);
+      // dispatch(signup(formData, history));
       dispatch({ type: 'AUTH', data: { result, token } });
       history.push('/');
     } catch (error) {
@@ -64,6 +78,7 @@ const Auth = () => {
 
   const googleFailure = () => {
     console.log('Google SignIn unsuccessfull');
+    alert('Error While Logging in');
   };
 
   return (
@@ -98,6 +113,14 @@ const Auth = () => {
               handleChange={handleChange}
               type='email'
             />
+            {isSignup && (
+              <Input
+                name='githubLink'
+                label='Github Link'
+                handleChange={handleChange}
+                type='link'
+              />
+            )}
             <Input
               name='password'
               label='Password'

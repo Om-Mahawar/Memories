@@ -40,29 +40,31 @@ const Navbar = () => {
   return (
     <AppBar position='static' color='inherit' className={classes.appBar}>
       <Link to='/' className={classes.brandContainer}>
-        <Typography variant='h2'>UNIV-CONNECT</Typography>
+        <Typography variant='h3'>UNIV-CONNECT</Typography>
         <img
           src={memories_logo}
           alt='memories'
-          height='40px'
+          height='35px'
           className={classes.image}
         />
       </Link>
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
-            <div className={classes.user}>
-              <Avatar
-                className={classes.purple}
-                alt={user.result.name}
-                src={user.result.imageurl}
-              >
-                {user.result.name.charAt(0)}
-              </Avatar>
-              <Typography className={classes.userName} variant='h6'>
-                {user.result.name}
-              </Typography>
-            </div>
+            <a href={user.result.githubLink} className={classes.navLink}>
+              <div className={classes.user}>
+                <Avatar
+                  className={classes.purple}
+                  alt={user.result.name}
+                  src={user.result.imageurl}
+                >
+                  {user.result.name.charAt(0)}
+                </Avatar>
+                <Typography className={classes.userName} variant='h6'>
+                  {user.result.name}
+                </Typography>
+              </div>
+            </a>
             <Button
               variant='contained'
               className={classes.logout}

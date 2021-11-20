@@ -34,30 +34,34 @@ const signin = async (req, res) => {
 };
 
 const signup = async (req, res) => {
-  const { email, password, confirmPassword, firstName, lastName } = req.body;
-
+  const { email, password, confirmPassword, firstName, lastName, githubLink } =
+    req.body;
   try {
     const existingUser = await User.findOne({ email });
+
     if (existingUser) {
       return res.status(404).json({ message: 'User already exists' });
     }
     if (password !== confirmPassword) {
       return res.status(400).json({ message: 'Password do not match' });
     }
-
-    const hashedPassword = await bycrypt.hash(password, process.env.SALT);
+    const hashedPassword = await bycrypt.hash(
+      password,
+      Number(process.env.SALT)
+    );
 
     const result = await User.create({
       email,
       password: hashedPassword,
       name: `${firstName} ${lastName}`,
+      githubLink,
     });
 
     const token = jwt.sign(
       { email: result.email, id: result._id },
       process.env.SECRET,
       {
-        expiresIn: '1h',
+        expiresIn: '10h',
       }
     );
 

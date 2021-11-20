@@ -31,6 +31,7 @@ export default makeStyles((theme) => ({
   userName: {
     display: 'flex',
     alignItems: 'center',
+    overflowWrap: 'break-word',
   },
   user: {
     display: 'flex',
@@ -40,9 +41,16 @@ export default makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
+  logout: {
+    marginLeft: '20px',
+  },
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
     marginRight: '6px',
+  },
+  navLink: {
+    color: '#000',
+    textDecoration: 'none',
   },
 }));
