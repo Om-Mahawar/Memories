@@ -109,7 +109,7 @@ const Post = ({ post, setCurrentId }) => {
       {userID === post?.creator && (
         <div className={classes.overlay2}>
           <Button
-            style={{ color: 'white' }}
+            style={{ color: 'black' }}
             size='small'
             onClick={() => {
               setCurrentId(post._id);

@@ -65,6 +65,7 @@ const Form = ({ currentId, setCurrentId }) => {
       message: '',
       tags: '',
       selectedFile: '',
+      githubLink: user?.result?.githubLink,
     });
   };
 
