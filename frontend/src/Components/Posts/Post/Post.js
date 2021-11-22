@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { deletePost, likePost } from '../../../actions/posts';
 import CommentSection from '../CommentSection';
@@ -71,7 +70,12 @@ const Post = ({ post, setCurrentId }) => {
   };
   return (
     <Card className={classes.card} raised elevetion={6}>
-      <a href={post.githubLink} className={classes.navLink}>
+      <a
+        href={post.githubLink}
+        className={classes.navLink}
+        target='_blank'
+        rel='noreferrer'
+      >
         <CardHeader
           avatar={
             <Avatar className={classes.purple}>

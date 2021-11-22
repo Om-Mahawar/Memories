@@ -50,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '5px',
     flex: '70%',
   },
+  navLink: {
+    color: '#000',
+    textDecoration: 'none',
+  },
 }));
 
 export default useStyles;

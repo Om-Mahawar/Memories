@@ -28,6 +28,7 @@ const CommentSection = ({ post }) => {
     const finalComment = {
       name: user.result.name,
       content: comment,
+      githubLink: user.result.githubLink,
     };
 
     const newComment = await dispatch(commentPost(finalComment, post._id));
@@ -79,11 +80,19 @@ const CommentSection = ({ post }) => {
             let currComment = comments[comments.length - i - 1];
             return (
               <Card className={classes.card}>
-                <CardHeader
-                  className={classes.header}
-                  title={currComment.name}
-                  subheader={moment(currComment.createdAt).fromNow()}
-                />
+                {console.log(currComment.githubLink)}
+                <a
+                  href={currComment.githubLink}
+                  target='_blank'
+                  rel='noreferrer'
+                  className={classes.navLink}
+                >
+                  <CardHeader
+                    className={classes.header}
+                    title={currComment.name}
+                    subheader={moment(currComment.createdAt).fromNow()}
+                  />
+                </a>
                 <CardContent
                   style={{
                     marginTop: '0px',
